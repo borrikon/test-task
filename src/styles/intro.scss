@@ -1,0 +1,39 @@
+@import '../variables/variables';
+
+.introCont{
+    background: url('../assets/bgSm.png') center/ cover no-repeat;
+    color: #FFFFFF;
+    padding: 40px 16px 71px;
+    margin: 0 auto;
+    text-align: center;
+    h2{
+        font-size: 40px;
+        line-height: 40px;
+        font-weight: 400;
+        margin: 0 auto 21px;
+    }
+    p{
+        font-size: 16px;
+        line-height: 26px;
+        margin:0 auto 32px;
+    }
+    h2, p{
+        max-width: 380px;
+    }
+}
+@media screen and (min-width: $small) {
+    .introCont{
+        background: url('../assets/bgMed.png') center/ cover no-repeat;
+    }
+  }
+@media screen and (min-width: $medium) {
+    .introCont{
+        background: url('../assets/bgMed.png') center/ 100% no-repeat;
+        padding: 89px 194px 88px;
+    }
+}
+@media screen and (min-width: $big) {
+    .introCont{
+        background: url('../assets/bgBig.png') center/ 100% no-repeat;
+    }
+}

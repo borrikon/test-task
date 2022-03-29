@@ -1,0 +1,26 @@
+@import '../variables/variables';
+
+.btn{
+    width: 100px;
+    height: 34px;
+    text-align: center;
+    padding: 4px 0;
+    background: $primary;
+    font-size: 16px;
+    color: #000000;
+    border: none;
+    border-radius: 80px;
+    transition: background .4s linear;
+    &:hover{
+        cursor: pointer;
+        background: $hover;
+    }
+}
+.disabled{
+    color: #FFFFFF;
+    background: $disabled;
+    &:hover{
+        cursor: not-allowed;
+        background: $disabled;
+    }
+}

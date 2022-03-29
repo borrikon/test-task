@@ -1,0 +1,46 @@
+@import '../variables/variables';
+
+.headerCont{
+    width: 100%;
+    background-color: #FFFFFF;
+}
+.headerCont-inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding: 13px 16px;
+    margin: 0 auto;
+}
+.imgCont{
+    padding-right: 14px;
+    img{
+        width: 100%;
+        height: 100%;
+        max-width: 104px;
+        max-height: 26px;
+    }
+}
+.btnCont{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    :nth-child(1){
+        margin-right: 10px;
+    }
+}
+@media screen and (min-width: $medium) {
+    .headerCont-inner{
+        max-width: $medium;
+    }
+}
+@media screen and (min-width: $big) {
+    .headerCont-inner{
+        max-width: $big;
+    }
+}
+@media screen and (min-width: $superBig) {
+    .headerCont-inner{
+        max-width: $superBig;
+    }
+}
