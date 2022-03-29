@@ -8,6 +8,15 @@
     font-size: 16px;
     line-height: 26px;
     margin-bottom: 20px;
+    p{  
+        margin: 0 auto;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        &:hover{
+            cursor: pointer;
+        }
+    }
     img{
         width: 70px;
         height: 70px;
@@ -25,7 +34,6 @@
   }
 @media screen and (min-width: $medium) {
     .userItemCont{
-        max-width: 344px;
         &:nth-child(2n){
             margin-left: 16px;
         }
@@ -33,6 +41,9 @@
   }
 @media screen and (min-width: $big) {
 .userItemCont{
+    p{  
+        display: block;
+    }
     max-width: 282px;
     &:nth-child(2n){
         margin-left: 0px;
