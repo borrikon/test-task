@@ -67,7 +67,7 @@
     }
     div{
         display: flex;
-        margin-bottom: 13px;
+        margin-bottom: 7px;
         label{
             user-select: none;
             line-height: 26px;
@@ -79,6 +79,7 @@
             border-radius: 50%;
             border: 1px solid #D0CFCF;
             margin-right: 10px;
+            margin-left: -1px;
             &:before{
                 content: '';
                 position: absolute;
@@ -107,7 +108,7 @@
     border: 1px solid #D0CFCF;
     border-radius: 4px;
     text-align: left;
-    margin: 50px auto;
+    margin: 47px auto 50px;
     width: 328px;
     label{
         border: 1px solid rgba(0, 0, 0, 0.87);
