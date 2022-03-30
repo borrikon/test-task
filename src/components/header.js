@@ -14,8 +14,8 @@ function Header(){
                     <img src={logo} alt='logo'/> 
                 </div>
                 <div className='btnCont'>
-                    <Button name={'Users'} scroll={scroll}/>
-                    <Button name={'Sign up'} scroll={scroll}/>
+                    <Button name={'Users'} action={scroll}/>
+                    <Button name={'Sign up'} action={scroll}/>
                 </div>
             </div>
         </div>

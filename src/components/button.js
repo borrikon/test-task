@@ -1,8 +1,8 @@
 import '../styles/button.scss';
 
-function Button({name, scroll}){
+function Button({name, action}){
     return(
-        <button className='btn' onClick={(e)=>scroll(e)}>
+        <button className='btn' onClick={(e)=>action(e)}>
             {name}
         </button>
     )
