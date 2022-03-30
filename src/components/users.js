@@ -10,17 +10,17 @@ import '../styles/users.scss';
 
 function Users(){
 
-    const [ page, setPage ] = useState(1)
+    const [ page, setPage ] = useState(14)
     const [ users, setUsers ] = useState([])
     const [ lastPage, setLastPage] = useState(false)
 
     function getNewPage(){
         getUsers(page)
         .then((data)=>{
-            if(!data.links.next_url){
-                setLastPage(!lastPage)
-                return
+            if(page+1 === data.total_pages){
+                setLastPage(true)
             } 
+            if(page === data.total_pages){return}
             setPage(page+1) 
             setUsers(users.concat(data.users))
         })
