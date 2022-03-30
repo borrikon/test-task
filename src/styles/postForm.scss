@@ -58,7 +58,73 @@
         color: $error;
     }  
 }
-
+.radioCont{
+    text-align: start;
+    width: 328px;
+    margin: 0 auto;
+    p{
+        margin-bottom: 11px;
+    }
+    div{
+        display: flex;
+        margin-bottom: 13px;
+        label{
+            user-select: none;
+            line-height: 26px;
+        }
+        input{
+            position: relative;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px solid #D0CFCF;
+            margin-right: 10px;
+            &:before{
+                content: '';
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                top: 5px;
+                left: 5px;
+                background-color: $secondary;
+                border-radius: 50%;
+                z-index: 3;
+                display: none;
+            }
+            &:checked &:before{
+                display: block;
+                outline: none;
+            }
+            &:checked{
+                border: 1px solid $secondary;
+            }
+        }
+    }
+}
+.pictureCont{
+    position: relative;
+    padding: 14px 15px 14px 0;
+    border: 1px solid #D0CFCF;
+    border-radius: 4px;
+    text-align: left;
+    margin: 50px auto;
+    width: 328px;
+    label{
+        border: 1px solid rgba(0, 0, 0, 0.87);
+        padding: 14.5px 15px;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+    }
+    input{
+        width: 0.1px;
+        height: 0.1px;
+        top: 0;
+        left: 0;
+        position: absolute;
+        z-index: -5;
+        
+    }
+}
 @keyframes labelOff{
     from{
         top: 13px;
@@ -71,3 +137,9 @@
         transform: scale(0.8);
     }
 }
+
+@media screen and (min-width: $medium) {
+    .inputCont, .radioCont, .pictureCont{
+        width: 380px;
+    }
+  }
