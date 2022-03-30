@@ -1,4 +1,5 @@
 import Button from '../components/button'
+import scroll from '../helpers/scroll';
 
 import '../styles/intro.scss';
 
@@ -21,7 +22,7 @@ function Intro(){
                     also be excited to learn, as the world 
                     of Front-End Development keeps evolving.
                 </p>
-                <Button name={'Sign up'} />
+                <Button name={'Sign up'} scroll={scroll}/>
             </div>
         </div>
     )
