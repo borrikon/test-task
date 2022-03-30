@@ -1,8 +1,9 @@
 import '../styles/button.scss';
 
-function Button({name, action}){
+function Button({name, action, disabled}){
+    //let classes = []
     return(
-        <button className='btn' onClick={(e)=>action(e)}>
+        <button className={!disabled ?'btn' : 'btn disabled'} onClick={(e)=>action(e)}>
             {name}
         </button>
     )

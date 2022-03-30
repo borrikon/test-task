@@ -1,15 +1,15 @@
 import '../styles/userItem.scss';
-import Icon from '../assets/user.png';
 
-function UserItem(){
+function UserItem(data){
+    let {name, phone, email, position, photo} = data.data
     return(
         <div className='userItemCont'>
-            <img src={Icon} alt='icon'/>
-            <p>Salvador Stewart Flynn Thomas Salva...</p>
+            <img src={photo} alt='icon'/>
+            <p>{name}</p>
             <div className='subInfo'>
-                <p>Leading specialist of the department o...</p>
-                <p>JeromeKlarkaJeromeKlarka19233623...</p>
-                <p>+38 (098) 278 76 24</p>
+                <p>{position}</p>
+                <p>{email}</p>
+                <p>{phone}</p>
             </div>
         </div>
     )

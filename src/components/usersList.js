@@ -6,7 +6,7 @@ export default function UsersList({users}){
     return(
         <>
             {
-                users.map(()=><UserItem />)
+                users.map((el, i)=><UserItem key={i} data={el} />)
             }
         </>
     )

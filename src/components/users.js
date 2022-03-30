@@ -12,10 +12,15 @@ function Users(){
 
     const [ page, setPage ] = useState(1)
     const [ users, setUsers ] = useState([])
+    const [ lastPage, setLastPage] = useState(false)
 
     function getNewPage(){
         getUsers(page)
         .then((data)=>{
+            if(!data.links.next_url){
+                setLastPage(!lastPage)
+                return
+            } 
             setPage(page+1) 
             setUsers(users.concat(data.users))
         })
@@ -35,7 +40,7 @@ function Users(){
                     <UsersList users={users} />
                 </div>
                 <div onClick={()=>getNewPage()} className='btnContainer'>
-                    <Button name={'Show more'} />
+                    <Button name={'Show more'} disabled={lastPage}/>
                 </div>
             </div>
         </div>
