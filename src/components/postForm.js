@@ -1,31 +1,60 @@
 import { useState } from 'react';
 import Button from '../components/button';
+import { checkValidation, emailRegEx, nameRegEx, telRegEx } from '../helpers/validation';
 
 import '../styles/postForm.scss';
 
 function PostForm(){
 
-    const [ inputTouched, setInputTouched ] = useState(false)
     const [ formValue, setFormValue ] = useState({
-       'name': '',
-       'email': '',
-       'phone':'', 
-       'position': '',
-       'picture': '',
+       'name': {
+           inputValue: '',
+           isTouched: false,
+           valid: false 
+        },
+       'email': {
+            inputValue: '',
+            isTouched: false,
+            valid: false 
+        },
+       'phone':{
+            inputValue: '',
+            isTouched: false,
+            valid: false 
+        }, 
+       'position': {
+            inputValue: '',
+            isTouched: false,
+            valid: false 
+        },
+       'picture': {
+            inputValue: '',
+            isTouched: false,
+            valid: false 
+        },
     })
 
-    function changeValue(fildName, value){
-        setInputTouched(true)
-        let updatedValue = {}
-        updatedValue[fildName] = value
+    function changeValue(fildName, value){        
+        let updatedValue = {...formValue}
+        updatedValue[fildName].inputValue = value
+        updatedValue[fildName].isTouched = true
         switch(fildName){
             case  'name':
+                if(checkValidation(value, nameRegEx)){
+                    updatedValue[fildName].valid = true
+                }
                 setFormValue({...formValue, ...updatedValue})
             break;
             case  'email':
+                if(checkValidation(value, emailRegEx)){
+                    updatedValue[fildName].valid = true
+                }
                 setFormValue({...formValue, ...updatedValue})
             break;
             case  'phone':
+                if(checkValidation(value, telRegEx)){
+                    updatedValue[fildName].valid = true
+                }
                 setFormValue({...formValue, ...updatedValue})
             break;
             case  'position':
@@ -36,40 +65,45 @@ function PostForm(){
             break;
             default: return
         }
-   }
+    }
+
+    function submitHandler(e){
+       e.preventDefault()
+       console.log(formValue)
+    }
 
     return(
         <div className='container'>
             <div className='postCont'>
                 <h2>Working with POST request</h2>
-                <form>
-                    <div className='inputCont'>
+                <form onSubmit={(e)=>submitHandler(e)}>
+                    <div className={(!formValue['name'].valid && formValue['name'].isTouched) ? 'inputCont error' : 'inputCont'}>
                         <input
-                            className={!inputTouched ? '' : 'touched'} 
+                            className={formValue['name'].isTouched ? 'touched' : ''} 
                             id='name' 
                             type='text' 
                             onChange={(e)=>changeValue('name', e.target.value)} 
-                            value={formValue['name']}
+                            value={formValue['name'].inputValue}
                         />
                         <label for='name'>Your name</label>
                     </div>
-                    <div className='inputCont'>
+                    <div className={(!formValue['email'].valid && formValue['email'].isTouched) ? 'inputCont error' : 'inputCont'}>
                         <input
-                            className={!inputTouched ? '' : 'touched'} 
+                            className={formValue['email'].isTouched ? 'touched' : ''} 
                             id='email' 
                             type='email'
                             onChange={(e)=>changeValue('email', e.target.value)} 
-                            value={formValue['email']}
+                            value={formValue['email'].inputValue}
                         />
                         <label for='email'>Email</label>
                     </div>
-                    <div className='inputCont'>
+                    <div className={(!formValue['phone'].valid && formValue['phone'].isTouched) ? 'inputCont error' : 'inputCont'}>
                         <input
-                            className={!inputTouched ? '' : 'touched'} 
+                            className={formValue['phone'].isTouched ? 'touched' : ''} 
                             id='phone' 
                             type='tel'
                             onChange={(e)=>changeValue('phone', e.target.value)} 
-                            value={formValue['phone']}
+                            value={formValue['phone'].inputValue}
                         />
                         <label for='phone'>Phone</label>
                     </div>
@@ -118,16 +152,19 @@ function PostForm(){
                     </div>
                     <div 
                         className='pictureCont'
-                        onChange={(e)=>changeValue('position', e.target.value)}
+                        onChange={(e)=>changeValue('picture', e.target.value)}
                     >
                         <label for='picture'>Upload</label>
                         <input type='file'
-                            filename={formValue['picture']} 
+                            filename={formValue['picture'].inputValue} 
                             id='picture' 
                             name='avatar'
                             accept='image/png, image/jpeg'
                         />
-                        {/* <div className='picPath'>{formValue['picture'] ? formValue['picture'] : 'Upload your photo'}</div> */}
+                        {formValue['picture'].inputValue 
+                            ? <div className='picPath'>{formValue['picture'].inputValue}</div> 
+                            : <div className='picPath'>Upload your photo</div>
+                        }
                     </div>
                     <Button type='submit' name={'Sing up'} />
                 </form>

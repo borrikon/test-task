@@ -22,7 +22,7 @@ function Intro(){
                     also be excited to learn, as the world 
                     of Front-End Development keeps evolving.
                 </p>
-                <Button name={'Sign up'} scroll={scroll}/>
+                <Button name={'Sign up'} action={scroll}/>
             </div>
         </div>
     )
