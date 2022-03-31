@@ -35,8 +35,11 @@
         background-color: $background;
         outline: none;
         &:focus + label{
-            animation: labelOff .2s linear  forwards;
+            animation: labelOff .2s linear forwards;
         }
+    }
+    .touched +label{
+        animation: labelOff .2s linear forwards;
     }
 }
 .error{

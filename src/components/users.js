@@ -10,7 +10,7 @@ import '../styles/users.scss';
 
 function Users(){
 
-    const [ page, setPage ] = useState(14)
+    const [ page, setPage ] = useState(1)
     const [ users, setUsers ] = useState([])
     const [ lastPage, setLastPage] = useState(false)
 
