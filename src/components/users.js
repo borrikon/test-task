@@ -6,30 +6,30 @@ import { getUsers } from '../helpers/request';
 import '../styles/users.scss';
 
 
-
-
 function Users(){
 
-    const [ page, setPage ] = useState(1)
+    const [ page, setPage ] = useState()
     const [ users, setUsers ] = useState([])
     const [ lastPage, setLastPage] = useState(false)
 
     function getNewPage(){
         getUsers(page)
         .then((data)=>{
-            if(page+1 === data.total_pages){
+            if(page === 1){
                 setLastPage(true)
             } 
-            if(page === data.total_pages){return}
-            setPage(page+1) 
+            setPage(page-1) 
             setUsers(users.concat(data.users))
         })
-        
     }
     useEffect(()=>{
-        if(page === 1){
-            getNewPage()
+        let fetchData = async () => {
+          let data = await getUsers()
+            .then((data)=> data['total_pages'])
+            setPage(data)
         }
+        fetchData()
+        getNewPage()
     }, [])
 
     return(

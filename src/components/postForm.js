@@ -3,6 +3,7 @@ import Button from '../components/button';
 import { checkValidation, emailRegEx, nameRegEx, telRegEx } from '../helpers/validation';
 
 import '../styles/postForm.scss';
+import PostFormRadio from './postFormRadio';
 
 function PostForm(){
 
@@ -107,49 +108,7 @@ function PostForm(){
                         />
                         <label for='phone'>Phone</label>
                     </div>
-                    <div 
-                        className='radioCont'
-                        onChange={(e)=>changeValue('position', e.target.value)}
-                    >
-                        <p>Select your position</p>
-                        <div>
-                            <input 
-                                defaultChecked
-                                name='position' 
-                                value='1'
-                                id='front' 
-                                type='radio'
-                            />
-                            <label for='front'>Frontend developer</label>
-                        </div>
-                        <div>
-                            <input 
-                                name='position' 
-                                value='2'
-                                id='back' 
-                                type='radio'
-                            />
-                            <label for='back'>Backend developer</label>
-                        </div>
-                        <div>
-                            <input 
-                                name='position' 
-                                value='3'
-                                id='designer' 
-                                type='radio'
-                            />
-                            <label for='designer'>Designer</label>
-                        </div>
-                        <div>
-                            <input 
-                                name='position' 
-                                value='4'
-                                id='qa' 
-                                type='radio'
-                            />
-                            <label for='qa'>QA</label>
-                        </div>
-                    </div>
+                    <PostFormRadio changeHandler={changeValue} />
                     <div 
                         className='pictureCont'
                         onChange={(e)=>changeValue('picture', e.target.value)}
