@@ -8,11 +8,14 @@ import '../styles/users.scss';
 
 function Users(){
 
+    const [ loading, setLoading ] = useState(false)
     const [ page, setPage ] = useState()
     const [ users, setUsers ] = useState([])
     const [ lastPage, setLastPage] = useState(false)
 
     function getNewPage(){
+        console.log('gatNewPage', page)
+        // if(!page){return}
         getUsers(page)
         .then((data)=>{
             if(page === 1){
@@ -22,13 +25,15 @@ function Users(){
             setUsers(users.concat(data.users))
         })
     }
+    
     useEffect(()=>{
-        let fetchData = async () => {
-          let data = await getUsers()
+        // let fetchData = async () => {
+          setLoading(true)  
+          let data =  getUsers()
             .then((data)=> data['total_pages'])
             setPage(data)
-        }
-        fetchData()
+        // }
+        // fetchData()
         getNewPage()
     }, [])
 
@@ -48,3 +53,5 @@ function Users(){
 }
 
 export default Users;
+
+ 
