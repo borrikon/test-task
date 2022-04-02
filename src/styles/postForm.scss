@@ -60,11 +60,23 @@
     label{
         color: $error;
     }  
+    .telPlaceholder{
+        display: none;
+    }
+}
+.telPlaceholder{
+    display: block;
+    text-align: left;
+    margin-left: 16px;
+    margin-bottom: -20px;
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 14px;
 }
 .radioCont{
     text-align: start;
     width: 328px;
-    margin: 0 auto;
+    margin: 25px auto 0;
     p{
         margin-bottom: 11px;
     }

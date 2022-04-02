@@ -16,7 +16,7 @@ export function getUsers(pageNumber=1){
     return(
         axios.get(`https://frontend-test-assignment-api.abz.agency/api/v1/users?page=${pageNumber}&count=6`)
         .then((response)=>response.data)
-        //.catch((err)=>console.log(err))
+        .catch((err)=>console.log(err))
     )
 }
 export function getToken(){

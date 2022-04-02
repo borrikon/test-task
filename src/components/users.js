@@ -10,33 +10,24 @@ import '../styles/users.scss';
 
 function Users(){
 
-    const [ firstLoad, setFirstLoading ] = useState(true)
-    const [ loading, setLoading ] = useState(true)
-    const [ page, setPage ] = useState()
+    const [ page, setPage ] = useState(1)
     const [ users, setUsers ] = useState([])
     const [ lastPage, setLastPage] = useState(false)
 
     function getNewPage(){
         getUsers(page)
         .then((data)=>{
-            if(page < 1){
+            if(data.links["next_url"] === null){
                 setLastPage(true)
             } 
-            setPage(page-1) 
+            setPage(page+1) 
             setUsers(users.concat(data.users))
+            
         })
     }
     useEffect(()=>{
-        getUsers()
-        .then((result)=>{
-            setPage(result['total_pages'])
-            setFirstLoading(false)
-        })
-    }, [])
-    useEffect(()=>{
         getNewPage()
-        setLoading(false)
-    }, [firstLoad])
+    }, [])
 
     return(
         <div className='container'>
@@ -44,7 +35,7 @@ function Users(){
                 <h2 className='usersTitle'>Working with GET request</h2>
                 <div className='usersList'>
                     {
-                        !loading 
+                        users.length 
                         ? <UsersList users={users} />
                         : <Loader />
                     }

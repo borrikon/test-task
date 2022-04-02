@@ -131,6 +131,7 @@ function PostForm(){
                                 value={formValue['phone'].inputValue}
                             />
                             <label for='phone'>Phone</label>
+                            <div className='telPlaceholder'>+38 (XXX) XXX - XX - XX</div>
                         </div>
                         <PostFormRadio changeHandler={changeValue} />
                         <div className='pictureCont'>
